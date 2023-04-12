@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>let studentList = [" ","hoc sinh 1","hoc sinh 2","hoc sinh 3"];
+
+        let text = `Lựa  chọn thao tác muốn thực hiên:
+        1. Lấy danh sách học sinh
+        2. Thêm 1 học sinh
+        3. Xóa 1 học sinh`;
+    
+        let option = prompt(text);
+    
+        if (option ==1) {
+            let s = `danh sách học sinh : \n`
+            for (let i = 0; i < studentList.length; i++) {
+                s += studentList[i] + "\n";
+        }
+        alert(s);
+        } else if (option == 2) {
+            let pos = prompt("Vị trí muốn thêm :");
+            let name = prompt("tên học sinh muốn thêm:");
+            studentList.splice(pos, 0, name);
+            console.log(studentList);
+        } else {
+            let pos = prompt("Số thứ tự học sinh muốn xóa:");
+            studentList.splice(pos, 1);
+            console.log(studentList);
+        } </script>
+</body>
+</html>

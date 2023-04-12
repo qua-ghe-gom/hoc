@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #searchbar{
+            margin-left: 15%;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        input[type=text] {
+            width: 30%;
+            -webkit-transition: width 0,15s ease-in-out;
+            transition: width 0,15s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 60%;
+
+        }
+
+        #list{
+            font-size: 1.5em; 
+            margin-left: 90px; 
+            list-style-type: none;
+        }
+        .item{
+            display: list-item;
+        }
+                       
+        
+    </style>
+</head>
+<body>
+<input id="searchbar" onkeyup="search_animal()" type="text" name="search" placeholder="tìm kiếm....">
+<ol id="list">
+    <li class="item">qua hay 01</li>
+    <li class="item">qua hay 02</li>
+    <li class="item">qua hay 03</li>
+    <li class="item">qua hay 04</li>
+    <li class="item">qua hay 05</li>
+</ol>
+<div id="list">
+    <p class="item">cc01</p>
+    <p class="item">cc02</p>
+    <p class="item">cc03</p>
+    <p class="item">cc04</p>
+    <p class="item">cc05</p>
+    <p class="item">cc06</p>
+    <p class="item">cc07</p>
+    <p class="item">cc08</p>
+    <p class="item">cc09</p>
+    <p class="item">cc10</p>
+</div>
+    
+    
+<script>
+function search_animal(){
+    let input=document.getElementById('searchbar').value//document lấy giá trị một văn bản
+    input=input.toLowerCase();
+    let x=document.getElementsByClassName('item');
+    for (i=0;i<x.length;i++){
+        if(!x[i].innerHTML.toLowerCase().includes(input)){
+            x[i].style.display="none";
+        }
+        else{
+            x[i].style.display='list-item';
+        }
+    }
+}
+</script>
+
+</body>
+</html>

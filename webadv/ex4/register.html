@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./account.css">
+</head>
+<body>
+    <div class="account-box" id="register">
+        <h2>Register</h2>
+        <form>
+            <div class="user-box">
+                <input id="email" type="text" name="" required="" placeholder="Email">
+            </div>
+            <div class="user-box">
+                <input id="password" type="password" name="" required="" placeholder="Password">
+            </div>
+            <div class="selector">
+                <a class="account" href="./login.html">Bạn đã có tài khoản?</a>
+                <button type="submit" class="btn">Submit</button>
+              </div>
+        </form>
+    </div>
+    <script>
+        let register = document.querySelector("#register")
+register.addEventListener("submit", (e) => {
+    e.preventDefault()
+    let email = document.getElementById('email')
+    let pw = document.getElementById("password")
+
+    let lowerCaseLetter = /[a-z]/g
+    let upperCaseLetter = /[A-Z]/g
+    let numbers = /[0-9]/g
+
+    if (email.value.trim().length == 0 && pw.value.trim().length == 0) {
+        alert("Vui lòng nhập email và mật khẩu của bạn")
+    }
+        else if (email.value.trim().length == 0) {
+        alert("Vui lòng nhập email của bạn")
+    }
+        else if (pw.value.trim().length == 0) {
+        alert("Vui lòng nhập mật khẩu của bạn")
+    }
+        else if (pw.value.trim().length < 8) {
+        alert("Mật khẩu cần dài ít nhất 8 ký tự")
+    }  
+        else if (!pw.value.trim().match(lowerCaseLetter)) {
+            alert("Mật khẩu phải chứa một chữ thường")
+    }
+        else if (!pw.value.trim().match(upperCaseLetter)) {
+        alert("Mật khẩu phải bao gồm một kí tự in hoa")
+    }
+        else if (!pw.value.trim().match(numbers)) {
+        alert("Mật khẩu phải chứa số")
+    }
+        else {
+            
+            if(localStorage.users) {
+                    let users = JSON.parse(localStorage.users)
+                users.push({
+                    email: email.value.trim(),
+                    pw: pw.value.trim()
+                })
+                
+                localStorage.setItem("users", JSON.stringify(users))
+            } 
+            else {
+                localStorage.setItem("users",JSON.stringify(
+                [
+                    {
+                      email: email.value.trim(),
+                      pw: pw.value.trim()
+                    }
+                ]));
+            }
+            location.replace("./login.html")
+    }
+
+})
+    </script>
+</body>
+</html>

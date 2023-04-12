@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="bai2"></div>
+    <script>
+        /* bai1 */
+        const equation = (c, d) => {
+        if (c === 0) {
+            return 'Invalid equation';
+        } else {
+            return -d/c;
+        }
+        }
+        document.write(equation(5, 8),"<br>")
+/* bai2 */
+const tamgiacvuong = (canhA, canhB) => {
+    let canhHuyen = Math.sqrt(canhA*canhA + canhB*canhB);
+    let chieucao = Math.sqrt(canhHuyen*canhHuyen - canhA*canhA);
+    let gocA = Math.atan(canhB/canhA) * 180 / Math.PI;
+    let gocB = Math.atan(canhA/canhB) * 180 / Math.PI;
+    return { canhHuyen: canhHuyen, chieucao: chieucao, gocA: gocA, gocB: gocB };
+}
+document.getElementById("bai2").innerHTML = "Cạnh huyền: " + tamgiacvuong(5, 12).canhHuyen + "<br>" + "Chiều cao: " + tamgiacvuong(5, 12).chieucao + "<br>" + "Góc A: " + tamgiacvuong(5, 12).gocA + "<br>" + "Góc B: " + tamgiacvuong(5, 12).gocB;
+
+
+    </script>
+</body>
+</html>

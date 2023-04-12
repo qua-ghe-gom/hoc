@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the band</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <style>
+    .line{
+        text-align:center;
+    }
+    .kkk{
+        background-color: black;
+        text-align: left;
+        position: fixed;
+        padding: 10px 0px 15px 0px ;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+        
+    }
+    .canchinh{
+            margin: 0px 20px 0px 20px;
+    }
+    a{
+            color: white;
+            text-decoration: none;
+
+    }
+    a:hover{
+    color: black;
+    background-color: white;
+    border-radius:10%;
+    }
+    br {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 24%;
+    }
+    h1{
+    font-size: 25px;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    }
+    p{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-align: center;
+    }
+    h2{
+        font-size: 35px;
+        color: black;
+        font-family: "Times New Roman", Times, serif;
+        text-align: center;
+    }
+    .container{
+        height: 200px;
+        border: 2px none ;
+        display: flex;
+        /*trục ngang*/
+        justify-content:center;
+        color: white;
+        flex-wrap: wrap;
+        flex-direction: column;
+        
+    }   
+    .item{
+        width: 200px;
+        height: 200px;
+        margin: 6%;
+        
+    }
+    h3{
+    font-size: 15px;
+    color:gray;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    }
+    input{
+        margin: 40px 25px;
+        width: 100%;
+        border: none;
+        padding: 10px 0;
+        border-bottom: solid 6px #0c0c0c;
+        background-position: -200px 0; 
+        text-align: center;
+        background-repeat: no-repeat;
+        color: rgb(0, 0, 0);
+    }
+    img{
+        width: 105%;
+        height: 100%;
+    }
+    </style>
+</head>
+<body style="margin-left: 20%;margin-right:20% ;">
+    <div class="kkk"> 
+        <a class="canchinh" href="https://www.google.com/" target="_blank">Home</a>
+    
+        <a  class="canchinh" href="https://www.google.com/" target="_blank">About</a>
+    
+        <a  class="canchinh" href="https://www.google.com/" target="_blank">Memvbers</a>
+    
+        <a  class="canchinh" href="https://www.google.com/" target="_blank">Contact</a>
+    
+    
+    </div>
+    <div>
+        
+      
+        <img class="slides" src="./image/img_ch.jpg" width="100%" >
+ 
+        <img class="slides" src="./image/img_la.jpg" width="100%" >
+        
+        <img class="slides" src="./image/img_ny.jpg" width="100%" >
+        <h1>The Band</h1>
+        <p class="line">This is our band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <br>
+        <h2>Band Members</h2>
+        
+       <script>
+            w3.slideshow(".slides",1000);
+        </script>
+    </div>
+    <div class="container">
+        <img class="item" src="./image/img_bandmember.jpg" >
+        <img class="item" src="./image/img_bandmember.jpg" >
+        <img class="item" src="./image/img_bandmember.jpg" >
+        
+    </div>
+    <h1 >CONTACT</h1>
+    <p>Chicago,US</p>    
+    <p>Phone: +00 151515</p>
+    <p>Email: mail@gmai.com</p>
+    <h3><i>Fan? Drop a note!</i></h3>
+    <input placeholder="Name" type="text" required="" >
+    <input placeholder="Email" type="text" required="" >
+    <input placeholder="Message" type="text" required="" >
+    <a href="https://www.youtube.com/watch?v=TY2z63JZV-Y&ab_channel=GrandMusic" target="_blank"><button class="w3-button w3-black" type="submit" style="margin-left: 49%;" >SEND</button></a>
+    <br>
+    <img src="./image/map.jpg" >
+
+</body>
+</html>

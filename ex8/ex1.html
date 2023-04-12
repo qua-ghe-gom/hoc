@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+<ul id="list"></ul>
+<button onclick="print()">click</button>
+    <script>
+        let vieccanlam=["đi chơi ","học bài","codeing","bla lba bla","hehehe "]
+        let colorlist=["red","yellow","blue","green","brown"]
+        //in mảng trên html
+        // let list=document.getElementById("list");
+        // let item1=document.createElement("li");
+        // item1.innerHTML=vieccanlam[0];
+        // list.appendChild(item1);
+        
+        /* // in mảng
+        document.write(vieccanlam);
+        console.log(vieccanlam);
+        
+        //đếm phần tử
+        document.write(vieccanlam.length,"<br>");
+        console.log(vieccanlam.length);
+        //thêm phẩn tử
+        vieccanlam.push("ngủ")
+        document.write(vieccanlam,"<br>");
+        console.log(vieccanlam);
+        // in từng phần tử
+        document.write(vieccanlam[1],"<br>");
+        document.write(vieccanlam[3],"<br>");
+        let viecdauten=vieccanlam[0]
+        document.write(viecdauten,"<br>")
+        //update
+        vieccanlam[0]="đi chơi với bồ 2";
+        console.log(vieccanlam);
+        document.write(vieccanlam[0],"<br>");
+        
+        //delete
+        vieccanlam.splice(0,1);//xoá 1 phần tử từ vị trí không        
+        console.log(vieccanlam);
+        document.write(vieccanlam[0],"<br>");
+
+       
+       let item2=document.createElement("li");
+       item2.innerHTML=vieccanlam[1];
+       list.appendChild(item2);
+
+       
+       let item3=document.createElement("li");
+       item3.innerHTML=vieccanlam[2];
+       list.appendChild(item3);
+
+       
+       let item4=document.createElement("li");
+       item4.innerHTML=vieccanlam[3];
+       list.appendChild(item4);
+       //vòng lặp
+       /* for (let i=0;i<=10;i++){
+        document.write(i," lô tô <br>")
+        console.log(i," lô tô")
+       } */
+       //in phần tử thứ i
+    //    for(let i=0;i<vieccanlam.length;i++)
+    //    {
+    //     let item1=document.createElement("li");
+    //     item1.innerHTML=vieccanlam[i];
+    //     list.appendChild(item1);
+    //     } 
+    //    /* for(let i=0;i<vieccanlam.length;i++){
+    //     document.write(vieccanlam[i],"<br>")
+    //     console.log(vieccanlam[i])
+    //    } */
+    // for(let i=0;i<vieccanlam.length;i++){
+    //     document.write(vieccanlam[i])
+    // }
+       let print = function ()
+       {
+        for(let i=0;i<vieccanlam.length;i++)
+       {
+            let todo1tag=document.createElement("li")
+            todo1tag.innerHTML=vieccanlam[i];
+            todo1tag.style.color=colorlist[i];
+            list.appendChild(todo1tag)
+        }
+       }
+      
+        
+    
+    
+
+    </script>
+</body>
+</html>

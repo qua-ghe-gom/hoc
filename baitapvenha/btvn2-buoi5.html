@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #lyric {
+          font-size: 24px;
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    <div id="lyric"></div>
+    <script>
+      const lyric = ["Verse 1:", "I see the world in black and white", "I'm living in a neon light", "I'm running through the city streets", "I'm searching for the missing piece", "Chorus:", "I'm just a lonely heart", "Trying to find my way", "I'm just a lonely heart", "Living for today"];
+      let i = 0;
+      let intervalId;
+  
+      function displayLyrics() {
+        document.getElementById("lyric").innerHTML += `${lyric[i]}<br>`;
+        i++;
+        if (i === lyric.length) {
+          clearInterval(intervalId);
+        }
+      }
+  
+      intervalId = setInterval(displayLyrics, 1000);
+    </script>
+</body>
+</html>

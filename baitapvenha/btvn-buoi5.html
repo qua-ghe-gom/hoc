@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+    // Kiểm tra xem localStorage có sẵn hay không
+    if (typeof(Storage) !== "undefined") {
+      // Lấy dữ liệu từ Local Storage
+      var users = JSON.parse(localStorage.getItem("users"));
+      if(users) {
+        // Tìm người dùng tên Phước
+        for(var i = 0; i < users.length; i++) {
+          if(users[i].name === "Phước") {
+            users[i].name = "Hà";
+            break;
+          }
+        }
+        // Update lại dữ liệu trong Local Storage
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+    } else {
+      console.log("Trình duyệt không hỗ trợ localStorage");
+    }
+  </script>
+  <script>
+    if (typeof(Storage) !== "undefined") {
+      // Lấy dữ liệu từ Local Storage
+      var users = JSON.parse(localStorage.getItem("users"));
+      if(users) {
+        // Tìm và xóa người dùng tên Phước
+        for(var i = 0; i < users.length; i++) {
+          if(users[i].name === "Phước") {
+            users.splice(i, 1);
+            break;
+          }
+        }
+        // Update lại dữ liệu trong Local Storage
+localStorage.setItem("users", JSON.stringify(users));
+}
+} else {
+console.log("Trình duyệt không hỗ trợ localStorage");
+}
+</script>
+
+  <script>
+    if (typeof(Storage) !== "undefined") {
+      localStorage.removeItem("users");
+    } else {
+      console.log("Trình duyệt không hỗ trợ localStorage");
+    }
+  </script>
+</body>
+</html>

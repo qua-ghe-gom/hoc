@@ -1,0 +1,35 @@
+body{
+    background-color: rgba(0, 0, 0, 0.794);
+    color: white;
+    text-align: center;
+}
+.img{
+    border-radius:15%;
+    -moz-border-radius:15%;
+    -webkit-border-radius:15%;
+    border: 9px double white
+}
+.font{
+    font-size: 35px;
+    color: white;
+    font-family: "Times New Roman";
+}
+br {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 24%;
+}
+a{
+    text-decoration: none;
+}
+#b:hover{
+    color: black;
+    background-color: white;
+    border-radius:10%;
+}
+.img2{
+    border-radius:15%;
+    -moz-border-radius:15%;
+    -webkit-border-radius:15%;
+} 
