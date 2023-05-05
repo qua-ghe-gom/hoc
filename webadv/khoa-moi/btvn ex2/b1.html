@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        /* cau1 */
+        let student = [
+            {
+                name: "NVA",
+                age: 16,
+                course: ["mindX 01", "mindX 02", "mindX 03"]
+            },
+            {
+                name: "NVB",
+                age: 18,
+                course: ["mindX 01", "mindX 02", "mindX 04"]
+            },
+            {
+                name: "NVC",
+                age: 17,
+                course: ["mindX 01", "mindX 03", "mindX 04"]
+            },
+            {
+                name: "NVD",
+                age: 15,
+                course: ["mindX 01", "mindX 02", "mindX 03"]
+            }
+        ]
+
+        /* a) */
+        let ageToFind = prompt("Độ tuổi cần tìm?");
+        let found = false;
+
+        for (let i = 0; i < student.length; i++) {
+            if (student[i].age == ageToFind) {
+                console.log(student[i].name);
+                document.write(student[i].name + "<br>");
+                found = true;
+            }
+        }
+
+        if (!found) {
+            console.log("Không tìm thấy!");
+            document.write("Không tìm thấy!" + "<br>");
+        }
+
+        /* b) */
+        let courseToFind = prompt("Khóa học cần tìm?");
+        let a = false;
+
+        for (let i = 0; i < student.length; i++) {
+            if (student[i].course.includes(courseToFind)) {
+                console.log(student[i].name);
+                document.write(student[i].name + "<br>");
+                a = true;
+            }
+        }
+
+        if (!a) {
+            console.log("Chưa có lớp học này!");
+            document.write("Chưa có lớp học này!" + "<br>");
+        }
+
+        /* cau2 */
+        // Khai báo 2 mảng chứa các số nguyên
+        let mangSoChan = [0, 2, 4, 6, 8];
+        let mangSoLe = [1, 3, 5, 7];
+
+        // a. Duyệt 2 mảng trên và hiển thị ra màn hình những số lớn hơn 3
+        console.log("Các số lớn hơn 3 trong mảng số chẵn:");
+        document.write("Các số lớn hơn 3 trong mảng số chẵn:" + "<br>");
+        for (let so of mangSoChan) {
+            if (so > 3) {
+                console.log(so);
+                document.write(so + "<br>");
+            }
+        }
+
+        console.log("Các số lớn hơn 3 trong mảng số lẻ:");
+        document.write("Các số lớn hơn 3 trong mảng số lẻ:<br>");
+        for (let so of mangSoLe) {
+            if (so > 3) {
+                console.log(so);
+                document.write(so + "<br>");
+            }
+        }
+
+
+        // b. Ghép 2 mảng kể trên lại thành 1 mảng [0, 2, 4, 6, 8, 1, 3, 5, 7]
+        let mangGhep = [...mangSoChan, ...mangSoLe];
+        console.log("Mảng sau khi ghép:", mangGhep);
+        document.write("Mảng sau khi ghép: " + mangGhep.join(", ") + "<br>");
+
+        // c. Ghép 2 mảng kể trên lại thành 1 mảng [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        let mangGhepKhongTrungLap = [...new Set([...mangSoChan, ...mangSoLe])];
+        mangGhepKhongTrungLap.sort();
+        console.log("Mảng sau khi ghép và sắp xếp:", mangGhepKhongTrungLap);
+        document.write("Mảng sau khi ghép và sắp xếp: " + mangGhepKhongTrungLap.join(", "));
+    </script>
+</body>
+</html>
+

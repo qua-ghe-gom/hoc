@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập</title>
+</head>
+<body>
+    <script>
+        // Câu 1
+        let arr1 = [1, 2, 3, 5];
+        let arr1Duplicate1 = arr1.slice();
+        let arr1Duplicate2 = [...arr1];
+            // Câu 2
+    let arrA = ["Hello", " Xin chào"];
+    let arrB = ["Bonjour", "Olá"];
+    let waysToSayHello1 = arrA.concat(arrB);
+    let waysToSayHello2 = [...arrA, ...arrB];
+
+    // Câu 3
+    let arrX = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    let arrSquare = arrX.map(x => x * x);
+    let arrOdds = arrX.filter(x => x % 2 !== 0);
+
+    // Câu 4
+    function filterRange(arr, a, b) {
+        return arr.slice(a, b + 1);
+    }
+    let arrExample = [1, 5, 4, 6];
+    let filteredArr = filterRange(arrExample, 0, 2);
+
+    // Câu 5
+    function filterRange2(arr, a, b) {
+        return arr.filter(value => value > a && value < b);
+    }
+    let filteredArr2 = filterRange2(arrExample, 1, 5);
+
+    // Câu 6
+    let student = [        {            name: "Duong",            age: 11,            hobbies: ["video game", "sleep", "learn"]
+        },
+        {
+            name: "Dong",
+            age: 12,
+            hobbies: ["video game", "sick", "study"]
+        },
+        {
+            name: "Minh",
+            age: 13,
+            hobbies: ["video game", "sick", "learn"]
+        },
+        {
+            name: "Thanh",
+            age: 9,
+            hobbies: ["play game", "sleep", "learn"]
+        },
+        {
+            name: "Hung",
+            age: 11,
+            hobbies: ["play game", "sick", "study"]
+        }
+    ];
+
+    // Cau 6.1
+    function timTheoTuoi(tuoi) {
+        let ketQua = student.filter(sv => sv.age === tuoi);
+        ketQua.forEach(sv => console.log(sv.name));
+    }
+    timTheoTuoi(11);
+
+    // Cau 6.2
+    function timTheoSoThich(soThich) {
+        let ketQua = student.filter(sv => sv.hobbies.includes(soThich));
+        ketQua.forEach(sv => console.log(sv.name + ": " + sv.hobbies.join(", ")));
+    }
+    timTheoSoThich("sleep");
+
+    // Câu 6.3
+    function locTheoSoThich(soThich) {
+        let ketQua = student.filter(sv => sv.hobbies.includes(soThich));
+        console.log(ketQua);
+    }
+    locTheoSoThich("study");
+
+    // Cau 6.4
+    function capNhatTuoi(mangHocSinh, tuoiCu, tuoiMoi) {
+    let mangMoi = mangHocSinh.map(sv => {
+        if (sv.age === tuoiCu) {
+            return {...sv, age: tuoiMoi};
+        } else {
+            return sv;
+        }
+    });
+    return mangMoi;
+}
+let studentMoi = capNhatTuoi(student, 11, 15);
+console.log(studentMoi);
+
+
+                // In kết quả ra màn hình
+    document.write("<h3>Filtered Array (Câu 4):</h3>");
+    document.write(filteredArr);
+    document.write("<br>");
+    document.write("<h3>Filtered Array (Câu 5):</h3>");
+    document.write(filteredArr2);
+    document.write("<br>");
+    document.write("<h3>Danh sách học sinh mới (Câu 6.4):</h3>");
+    document.write(JSON.stringify(studentMoi));
+</script>
+</body>
+</html>

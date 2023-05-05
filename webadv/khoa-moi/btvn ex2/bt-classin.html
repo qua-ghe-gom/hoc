@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<h2>Bài 1: Lọc các phần tử trùng nhau của hai mảng</h2>
+<script>
+    let arr1 = [1,2,4,5,6]; 
+    let arr2 = [1,6,8,9,0]; 
+
+    let commonElements = arr1.filter(element => arr2.includes(element));
+
+    console.log(commonElements); // Output: [1, 6]
+</script>
+
+<h2>Bài 2: Tạo một mảng mới bằng cách thêm 5 vào từng phần tử của mảng ban đầu</h2>
+<script>
+    let arr = [1, 54, 6, 7];
+    let newArr = arr.map(element => element + 5);
+
+    console.log(newArr); // Output: [6, 59, 11, 12]
+</script>
+
+<h2>Bài 3: Loại bỏ các phần tử có giá trị bằng 1, 8, 10, 96, 7</h2>
+<script>
+    let m = [1,2,4,5,6,7]; 
+    let n = [3,5,675,8,96];
+
+    function removeElements(arr) {
+    let unwantedValues = [1, 8, 10, 96, 7];
+    return arr.filter(element => !unwantedValues.includes(element));
+    }
+
+    let filteredM = removeElements(m);
+    let filteredN = removeElements(n);
+
+    console.log(filteredM); // Output: [2, 4, 5, 6]
+    console.log(filteredN); // Output: [3, 5, 675]
+</script>
+
+<h2>Bài 4: Chuyển đổi mảng thành một đối tượng mới</h2>
+<script>
+    let players = [
+    { id: 11, name: 'Messi', age: 33 },
+    { id: 12, name: 'Ronaldo', age: 34 },
+    { id: 13, name: 'Young', age: 35 },
+    { id: 14, name: 'Mane', age: 21 },
+    { id: 15, name: 'Salah', age: 24 }
+    ];
+
+    // Sử dụng reduce()
+    let playersModified = players.reduce((acc, player) => {
+    acc[player.id] = player;
+    return acc;
+    }, {});
+
+    console.log(playersModified);
+
+    // Sử dụng vòng lặp for
+    let playersModified2 = {};
+
+    for (let i = 0; i < players.length; i++) {
+    let player = players[i];
+    playersModified2[player.id] = player;
+    }
+
+    console.log(playersModified2);
+</script>
+<h1>LƯU Ý:
+    MỞ DEV TOOL VÀ BẬT CONSOLE ĐỂ CÓ THỂ THẤY ĐƯỢC KẾT quả
+</h1>
+
+</body>
+</html>
