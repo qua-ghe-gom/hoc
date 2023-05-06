@@ -9,12 +9,31 @@
         body{
             background-color: black;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-    </style>
+        h1 {
+            animation: marquee 5s linear infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes marquee {
+            0% {transform: translateX(100%);}
+            100% {transform: translateX(-100%);}
+        }
+        html {
+            overflow: hidden;
+        }
+        html, body {
+            height: 100%;
+        }
+
+        </style>
 </head>
 <body>
-    <h1>MỞ CONsoLE LÊN ĐỂ XEM ĐÁP ÁN
-    </h1>
+    <h1>MỞ CONSOLE LÊN ĐỂ XEM ĐÁP ÁN</h1>
     <script>
         class Phanso {
             constructor(tuso, mauso) {
