@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        class dongvat{
+            constructor(ten, ngaynhan, gioitinh){
+                this.ten = ten;
+                this.ngaynhan = ngaynhan;
+                this.gioitinh = gioitinh;
+            }
+            goiten() {
+                return this.ten;
+            }
+            goingaynhan() {
+                return this.ngaynhan;
+            }
+            goigioitinh() {
+                return this.gioitinh;
+            }
+            tiengKeu() {
+                console.log("Động vật kêu...");
+            }
+            hanhDongDacTrung() {
+                console.log("Động vật có hành động đặc trưng...");
+            }
+        }
+        
+        class meo extends dongvat{
+            constructor(ten, ngaynhan, gioitinh, maulong){
+                super(ten, ngaynhan, gioitinh);
+                this.maulong = maulong;
+            }
+            tiengKeu() {
+                console.log("nghèo nghèo!");
+            }
+            batCa() {
+                console.log("Mèo đang bắt cá...");
+            }
+        }
+
+        class cho extends dongvat{
+            constructor(ten, ngaynhan, gioitinh, cannang){
+                super(ten, ngaynhan, gioitinh);
+                this.cannang = cannang;
+            }
+            tiengKeu() {
+                console.log("điêu làm chó");
+            }
+            chay() {
+                console.log("Chó đang phóng...");
+            }
+        }
+        let yellow = new meo("vàng", 2020, "cái", "vàng");
+        let dog = new cho("mực", 2020, "đực", 150);
+
+        console.log(yellow.goiten()); // Kết quả: "vàng"
+        console.log(yellow.goingaynhan()); // Kết quả: "2020"
+        console.log(yellow.goigioitinh()); // Kết quả: "cái"
+        yellow.tiengKeu(); // Kết quả: "nghèo nghèo!"
+        yellow.batCa(); // Kết quả: "Mèo đang bắt cá..."
+
+        console.log(dog.goiten()); // Kết quả: "mực"
+        console.log(dog.goingaynhan()); // Kết quả: "2020"
+        console.log(dog.goigioitinh()); // Kết quả: "đực"
+        console.log(dog.cannang); // Kết quả: 150
+        dog.tiengKeu(); // Kết quả: "điêu làm chó"
+        dog.chay(); // Kết quả: "Chó đang phóng..."
+            </script>
+</body>
+</html>

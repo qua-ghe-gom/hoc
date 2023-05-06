@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: aliceblue;
+
+        }
+    </style>
+</head>
+<body>
+    <script>
+        class Car {
+    constructor(name, year) {
+        this.name = name;
+        this.year = year;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    calcAge() {
+        let date = new Date;
+        return date.getFullYear() - this.year;
+    }
+}
+
+class Rollroyce extends Car {
+    constructor(name, year, model) {
+        super(name, year);
+        this.model = model;
+    }
+}
+
+class MindXStudent {
+    constructor(name, age, course) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+}
+
+class GameMakerStudent extends MindXStudent {
+    constructor(name, age, course, level) {
+        super(name, age, course);
+        this.level = level;
+    }
+
+    drag_drop_components() {
+        console.log("drag & drop")
+    }
+}
+
+class WebStudent extends MindXStudent {
+    constructor(name, age, course, level) {
+        super(name, age, course);
+        this.level = level;
+    }
+
+    write_HTML() {
+        console.log(this.name + " code HTML")
+    }
+}
+    </script>
+</body>
+</html>
