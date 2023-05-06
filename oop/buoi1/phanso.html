@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>MỞ CONsoLE LÊN ĐỂ XEM ĐÁP ÁN
+    </h1>
+    <script>
+        class Phanso {
+            constructor(tuso, mauso) {
+                this.tuso = tuso;
+                this.mauso = mauso;
+            }
+
+            cong(ps) {
+                let tusomoi = this.tuso * ps.mauso + ps.tuso * this.mauso;
+                let mausomoi = this.mauso * ps.mauso;
+                return new Phanso(tusomoi, mausomoi);
+            }
+
+            tru(ps) {
+                let tusomoi = this.tuso * ps.mauso - ps.tuso * this.mauso;
+                let mausomoi = this.mauso * ps.mauso;
+                return new Phanso(tusomoi, mausomoi);
+            }
+
+            nhan(ps) {
+                let tusomoi = this.tuso * ps.tuso;
+                let mausomoi = this.mauso * ps.mauso;
+                return new Phanso(tusomoi, mausomoi);
+            }
+
+            chia(ps) {
+                let tusomoi = this.tuso * ps.mauso;
+                let mausomoi = this.mauso * ps.tuso;
+                return new Phanso(tusomoi, mausomoi);
+            }
+
+            xuat() {
+                console.log(`${this.tuso}/${this.mauso}`);
+            }
+
+            static nhap() {
+                let tuso = prompt("Nhập tử số: ");
+                let mauso = prompt("Nhập mẫu số: ");
+                return new Phanso(parseInt(tuso), parseInt(mauso));
+            }
+        }
+        let ps1 = PhanSo.nhap();
+        let ps2 = PhanSo.nhap();
+
+        let tong = ps1.cong(ps2);
+        let hieu = ps1.tru(ps2);
+        let tich = ps1.nhan(ps2);
+        let thuong = ps1.chia(ps2);
+
+        console.log("Tổng hai phân số:");
+        tong.xuat();
+
+        console.log("Hiệu hai phân số:");
+        hieu.xuat();
+
+        console.log("Tích hai phân số:");
+        tich.xuat();
+
+        console.log("Thương hai phân số:");
+        thuong.xuat();
+    </script>
+</body>
+</html>
