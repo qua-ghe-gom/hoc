@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico" />
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .switch-link {
+            margin-top: 20px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <input type="text" id="name-input" placeholder="Tên">
+          <input type="email" id="email-input" placeholder="Email">
+          <input type="password" id="password-input" placeholder="Mật khẩu">
+          <input type="password" id="confirm-password-input" placeholder="Xác nhận mật khẩu">
+          <button type="submit">Đăng ký</button>
+          <p class="switch-link">Đã có tài khoản? <a href="https://www.facebook.com/login">Đăng nhập</a></p>
+        </form>
+      </div>
+      <script>
+
+        // Hàm xử lý đăng ký
+        function xuLyDangKy(suKien) {
+        suKien.preventDefault();
+
+        const inputTen = document.getElementById('name-input');
+        const inputEmail = document.getElementById('email-input');
+        const inputMatKhau = document.getElementById('password-input');
+        const inputXacNhanMatKhau = document.getElementById('confirm-password-input');
+
+        const ten = inputTen.value;
+        const email = inputEmail.value;
+        const matKhau = inputMatKhau.value;
+        const xacNhanMatKhau = inputXacNhanMatKhau.value;
+
+        if (matKhau !== xacNhanMatKhau) {
+            alert('Mật khẩu không khớp!');
+            return;
+        }
+
+        const user = new User(ten, email, matKhau);
+        user.luuVaoLocalStorage();
+
+        alert('Đăng ký thành công!');
+        document.getElementById('signup-form').reset();
+        }
+
+        // Gắn bộ lắng nghe sự kiện cho form đăng ký
+        document.getElementById('signup-form').addEventListener('submit', xuLyDangKy);
+
+      </script>
+</body>
+</html>
