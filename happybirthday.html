@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,wght@1,300&display=swap" rel="stylesheet">
+    <style>
+          body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .message {
+            position: relative;
+            z-index: 10;
+            background-color: rgb(193, 128, 193);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+            animation: blink 2s infinite;
+            font-family: 'Playfair', serif;
+        }
+
+        @keyframes blink {
+            0% {opacity: 1;}
+            50% {opacity: 0.5;}
+            100% {opacity: 1;}
+        }
+
+        .name {
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 24px;
+            text-align: center;
+            color: rebeccapurple;
+            font-family: 'Charm', cursive;
+            font-size: 30px;
+            letter-spacing: 5px;
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+    <h3 class="name">Happy Hirthday</h3>
+
+    <div class="message">
+        Gần tới sinh nhật của cậu, tớ muốn là người gửi món quà này đầu tiên. Chúc cậu có một sinh nhật thật vui vẻ và hạnh phúc! 🥳
+    </div>
+    <canvas class="confetti" id="canvas"></canvas>
+
+    <script>
+        //-----------Var Inits--------------
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        let cx, cy;
+        const confetti = [];
+        const confettiCount = 500;
+        const gravity = 0.5;
+        const terminalVelocity = 5;
+        const drag = 0.075;
+        const colors = [
+            { front: '#ff7675', back: '#d63031' },
+            { front: '#74b9ff', back: '#0984e3' },
+            { front: '#55efc4', back: '#00b894' },
+            { front: '#fdcb6e', back: '#e17055' },
+            { front: '#a29bfe', back: '#6c5ce7' },
+            { front: '#fd79a8', back: '#e84393' },
+            { front: '#81ecec', back: '#00cec9' },
+            { front: '#ffeaa7', back: '#fab1a0' }
+        ];
+
+        //-----------Functions--------------
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            cx = ctx.canvas.width / 2;
+            cy = ctx.canvas.height / 2;
+        }
+
+        function randomRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function initConfetti() {
+            for (let i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    color: colors[Math.floor(randomRange(0, colors.length))],
+                    dimensions: {
+                        x: randomRange(10, 20),
+                        y: randomRange(10, 30)
+                    },
+                    position: {
+                        x: randomRange(0, canvas.width),
+                        y: canvas.height - 1
+                    },
+                    rotation: randomRange(0, 2 * Math.PI),
+                    scale: {
+                        x: 1,
+                        y: 1
+                    },
+                    velocity: {
+                        x: randomRange(-25, 25),
+                        y: randomRange(0, -50)
+                    }
+                });
+            }
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            confetti.forEach((confetto, index) => {
+                let width = confetto.dimensions.x * confetto.scale.x;
+                let height = confetto.dimensions.y * confetto.scale.y;
+
+                ctx.translate(confetto.position.x, confetto.position.y);
+                ctx.rotate(confetto.rotation);
+
+                confetto.velocity.x -= confetto.velocity.x * drag;
+                confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
+                confetto.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
+
+                confetto.position.x += confetto.velocity.x;
+                confetto.position.y += confetto.velocity.y;
+
+                if (confetto.position.y >= canvas.height) confetti.splice(index, 1);
+                if (confetto.position.x > canvas.width) confetto.position.x = 0;
+                if (confetto.position.x < 0) confetto.position.x = canvas.width;
+
+                confetto.scale.y = Math.cos(confetto.position.y * 0.1);
+                ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
+
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(width / 2, height / 2);
+                ctx.lineTo(width, 0);
+                ctx.lineTo(width / 2, -height / 2);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            });
+
+            if (confetti.length <= 10) initConfetti();
+
+            window.requestAnimationFrame(render);
+        }
+
+        //---------Execution--------
+        resizeCanvas();
+        initConfetti();
+        render();
+
+        //----------Resize----------
+        window.addEventListener('resize', function () {
+            resizeCanvas();
+        });
+
+        //------------Click------------
+        window.addEventListener('click', function () {
+            initConfetti();
+        });
+
+        
+    </script>
+</body>
+</html>
