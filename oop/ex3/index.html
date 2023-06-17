@@ -15,13 +15,15 @@
 </head>
 <body>
     <div class="form-container">
-        <h1 class="text-center">Đăng Nhập</h1>
+        <h1 class="text-center">Đăng Ký</h1>
         <div action="">
             <div class="mb-3">
                 <input type="text" id="username" placeholder="Username...." class="form-control">
                 <input type="email" id="email" placeholder="email...." class="form-control">
                 <input type="password" id="password" placeholder="password...." class="form-control">
-                <button onclick="register()">Register</button>
+                <button onclick="register()">Đăng ký</button><br>
+                <button class="anonymous" onclick="registerAnonymously()">Đăng ký ẩn danh</button><br>
+                <button class="anonymous" onclick="registerWithFacebook()">Đăng ký bằng Facebook</button>
             </div>
         </div>
     </div>

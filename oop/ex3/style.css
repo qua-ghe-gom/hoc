@@ -47,4 +47,21 @@ html, body {
     border: none;
     padding: 10px 20px;
   }
-  
+
+  .form-container .anonymous {
+  background-color: #46f0e2; /* Màu nền đỏ */
+  color: #d87196; /* Màu chữ trắng */
+  font-size: 18px; /* Kích thước chữ 18px */
+  padding: 10px 20px; /* Khoảng cách lề trong nút */
+  border-radius: 5px; /* Góc bo tròn */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển tiếp */
+}
+
+.anonymous:hover {
+  background-color: #00FF00; /* Màu nền xanh lá khi di chuột qua */
+}
+
+.anonymous.loading {
+  background-color: #CCCCCC; /* Màu nền xám khi đang đăng ký */
+  cursor: not-allowed; /* Đổi con trỏ chuột thành không cho phép */
+}

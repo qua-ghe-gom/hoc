@@ -83,3 +83,38 @@ function validateField(field){
         return true;
     }
 }
+
+//xác thực ẩn danh
+function registerAnonymously() {
+    firebase.auth().signInAnonymously()
+      .then((userCredential) => {
+        // Xác thực thành công
+        let user = userCredential.user;
+        console.log("Đăng ký ẩn danh thành công. User ID: " + user.uid);
+        alert("Đã đăng ký thành công")
+        // Tiếp tục xử lý sau khi xác thực thành công
+      })
+      .catch((error) => {
+        // Xảy ra lỗi trong quá trình xác thực
+        console.error("Lỗi đăng ký ẩn danh: " + error.message);
+      });
+  }
+
+
+
+  // Thay đổi hàm registerAnonymously thành hàm registerWithFacebook
+function registerWithFacebook() {
+    // Tạo một nhà cung cấp xác thực Facebook
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    // Thực hiện xác thực sử dụng nhà cung cấp Facebook
+    firebase.auth().signInWithPopup(provider)
+    .then(function(result) {
+        // Xác thực thành công, bạn có thể truy cập thông tin người dùng ở result.user
+        console.log(result.user);
+    })
+    .catch(function(error) {
+        // Xảy ra lỗi trong quá trình xác thực
+        console.error(error);
+    });
+  }
