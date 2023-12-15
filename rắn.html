@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trò chơi Rắn Săn Mồi</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #game-board {
+            width: 400px;
+            height: 400px;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        .snake {
+            width: 100%;
+            height: 100%;
+            background-color: green;
+            grid-row-start: auto;
+            grid-column-start: auto;
+        }
+        .food {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            grid-row-start: auto;
+            grid-column-start: auto;
+        }
+        #game-over-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+        #game-over-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-board"></div>
+    <div id="game-over-overlay"></div>
+    <div id="game-over-modal">
+        <h2>Bạn đã thua!</h2>
+        <p>Bạn có muốn chơi lại không?</p>
+        <button class="button" onclick="restartGame()">Chơi lại</button>
+    </div>
+    <script>
+        const board = document.getElementById('game-board');
+        let snake = [{x: 10, y: 10}];
+        let food = {x: 15, y: 15};
+        const boardSize = 20;
+        let direction = {x: 0, y: 0};
+        let lastRenderTime = 0;
+        let gameOver = false;
+
+        window.addEventListener('keydown', e => {
+            switch(e.key) {
+                case 'ArrowUp': if (direction.y === 0) direction = {x: 0, y: -1}; break;
+                case 'ArrowDown': if (direction.y === 0) direction = {x: 0, y: 1}; break;
+                case 'ArrowLeft': if (direction.x === 0) direction = {x: -1, y: 0}; break;
+                case 'ArrowRight': if (direction.x === 0) direction = {x: 1, y: 0}; break;
+            }
+        });
+
+        function main(currentTime) {
+            if (gameOver) {
+                showGameOverModal();
+                return;
+            }
+
+            window.requestAnimationFrame(main);
+            const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+            if (secondsSinceLastRender < 0.1) return;
+            lastRenderTime = currentTime;
+
+            updateGame();
+            drawGame();
+        }
+
+        function updateGame() {
+            const head = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                placeFood();
+            } else {
+                snake.pop();
+            }
+
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    gameOver = true;
+                    break;
+                }
+            }
+
+            if (head.x < 0 || head.x >= boardSize || head.y < 0 || head.y >= boardSize) {
+                gameOver = true;
+            }
+        }
+
+        function drawGame() {
+            board.innerHTML = '';
+            snake.forEach(segment => {
+                const snakeElement = document.createElement('div');
+                snakeElement.style.gridRowStart = segment.y + 1;
+                snakeElement.style.gridColumnStart = segment.x + 1;
+                snakeElement.classList.add('snake');
+                board.appendChild(snakeElement);
+            });
+
+            const foodElement = document.createElement('div');
+            foodElement.style.gridRowStart = food.y + 1;
+            foodElement.style.gridColumnStart = food.x + 1;
+            foodElement.classList.add('food');
+            board.appendChild(foodElement);
+        }
+
+        function placeFood() {
+            food = {
+                x: Math.floor(Math.random() * boardSize),
+                y: Math.floor(Math.random() * boardSize)
+            }
+        }
+
+        function showGameOverModal() {
+            const overlay = document.getElementById('game-over-overlay');
+            const modal = document.getElementById('game-over-modal');
+            overlay.style.display = 'block';
+            modal.style.display = 'block';
+        }
+
+        function restartGame() {
+            window.location.reload();
+        }
+
+        placeFood();
+        window.requestAnimationFrame(main);
+    </script>
+</body>
+</html>
